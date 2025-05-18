@@ -21,16 +21,19 @@ html {
 body {
     background: var(--maisEscuro);
     color: var(--claro);
+    overflow-x: hidden;
+    padding-top: 80px;
+    /* Compensa o menu fixo */
 }
 
+/* Navegação */
 .navegacao {
     position: fixed;
     top: 0;
-    background: rgb(10, 16, 30, 0.8);
     width: 100%;
+    background: rgba(10, 16, 30, 0.8);
     z-index: 100;
     padding: 1.5rem;
-
 }
 
 .menu {
@@ -38,6 +41,7 @@ body {
     justify-content: center;
     list-style: none;
     gap: 3rem;
+    flex-wrap: wrap;
 }
 
 .menu-link {
@@ -46,7 +50,6 @@ body {
     font-weight: 500;
     position: relative;
     padding: 0.5rem 0;
-
 }
 
 .menu-link::after {
@@ -64,6 +67,7 @@ body {
     width: 100%;
 }
 
+/* Cabeçalho */
 .cabecalho {
     padding: 200px;
     display: flex;
@@ -71,10 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    
 }
-    
-
 
 .foto-perfil {
     width: 350px;
@@ -86,30 +87,32 @@ body {
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     color: var(--primaria);
     font-weight: bold;
     margin: 20px;
 }
 
 .cabecalho-subtitulo {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     color: var(--claro);
     font-weight: 500;
     margin: 20px;
 }
 
-.sobre {
+/* Seções */
+.sobre,
+.projetos,
+.contatos {
     padding: 6rem 2rem;
 }
 
+/* Sobre */
 .sobre-titulo {
-    font-size: 3rem;
+    font-size: clamp(2rem, 4vw, 3rem);
     color: var(--claro);
     text-align: center;
     margin-bottom: 20px;
-
-
 }
 
 .sobre-caixa {
@@ -120,24 +123,18 @@ h1 {
     border: 1px solid var(--vidro);
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.05);
-
 }
 
 .sobre-paragrafo {
     text-align: center;
     font-size: 1.3rem;
-
 }
 
-.projetos {
-    padding: 6rem 2rem;
-}
-
+/* Projetos */
 .projetos-titulo {
     text-align: center;
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
     margin-bottom: 50px;
-
 }
 
 .projetos-imagem {
@@ -152,8 +149,6 @@ h1 {
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
-   
-
 }
 
 .caixa-textos-projetos {
@@ -174,11 +169,9 @@ h1 {
     cursor: pointer;
 }
 
-
 .projetos-card:hover {
     transform: translateY(-10px) scale(1.03);
     box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
-
 }
 
 .paragrafo-projetos {
@@ -190,17 +183,11 @@ h1 {
     margin-bottom: 5px;
 }
 
-.contatos {
-    padding: 6rem 2rem;
-}
-
-
-
+/* Contato */
 .contatos-titulo {
     text-align: center;
-    font-size: 4.0rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     margin-bottom: 50px;
-
 }
 
 .formulario-contato {
@@ -213,7 +200,6 @@ h1 {
     border-radius: 16px;
 }
 
-
 .campo-form {
     width: 100%;
     padding: 1rem;
@@ -222,12 +208,11 @@ h1 {
     color: var(--claro);
     border: 1px solid var(--vidro);
     outline: none;
-    
 }
 
 .campo-form:focus {
     border-color: var(--primaria);
-    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3));
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
 }
 
 .grupo-form {
@@ -248,9 +233,10 @@ h1 {
 
 .botao-form:hover {
     transform: translateY(-4px);
-    box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);    
+    box-shadow: 0 0 10px rgba(79, 70, 229, 0.4);
 }
 
+/* Partículas decorativas */
 .particulas {
     position: fixed;
     top: 0;
@@ -259,21 +245,42 @@ h1 {
     height: 100%;
     opacity: 0.5;
     z-index: -1;
-    background: 
-    radial-gradient(circle at 10% 20%, var(--primaria), transparent 20%),
-    radial-gradient(circle at 90% 80%, var(--secondaria), transparent 20%),
-    var(--maisEscuro);
+    background:
+        radial-gradient(circle at 10% 20%, var(--primaria), transparent 20%),
+        radial-gradient(circle at 90% 80%, var(--secondaria), transparent 20%),
+        var(--maisEscuro);
 }
 
+/* Animação */
 @keyframes flutuar {
-    0%, 100%{
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
+
+    0%,
     100% {
         transform: translateY(0);
     }
+
+    50% {
+        transform: translateY(-20px);
+    }
 }
 
+/* MEDIA QUERIES PARA TELAS PEQUENAS */
+@media (max-width: 768px) {
+    .cabecalho {
+        padding: 100px 20px;
+    }
+
+    .foto-perfil {
+        width: 200px;
+        height: 200px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .sobre-paragrafo {
+        font-size: 1rem;
+    }
+}
