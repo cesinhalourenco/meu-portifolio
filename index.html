@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang=pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="particulas"></div>
+
+    <nav class="navegacao">
+        <ul class="menu">
+            <li>
+                <a href="#início" class="menu-link">Início</a>
+            </li>
+            <li>
+                <a href="#sobre" class="menu-link">Sobre</a>
+            </li>
+            <li>
+                <a href="#projetos" class="menu-link">Projetos</a>
+            </li>
+            <li>
+                <a href="#contatos" class="menu-link">Contato</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="inicio" class="cabecalho">
+
+        <img src="./img/Eu.jpg" class="foto-perfil">
+        <h1>Cesar Augustus</h1>
+        <p class="cabecalho-subtitulo">Desenvolvedor Front End</p>
+
+
+        <section id="sobre" class="sobre">
+            <h2 class="sobre-titulo">Sobre Mim</h2>
+            <div class="sobre-caixa">
+                <p class="sobre-paragrafo">
+                    Olá! Meu nome é Cesar Augustus, sou um desenvolvedor Front End apaixonado por criar experiências
+                    digitais incríveis. Tenho experiência em HTML, CSS e JavaScript, e estou sempre em busca de
+                    aprender novas tecnologias e aprimorar minhas habilidades.
+                </p>
+            </div>
+        </section>
+
+        <section id="projetos" class="projetos">
+            <h2 class="projetos-titulo">Meus Projetos</h2>
+            <div class="projetos-caixa">
+                <div class="projetos-card">
+                    <img src="./img/Projeto1.png" alt="Projeto 1" class="projetos-imagem">
+                    <div class="caixa-textos-projetos">
+                        <h3 class="info-projetos">Loja de Carros</h3>
+                        <p class="paragrafo-projetos">Uma loja online de carros, onde os usuários podem navegar e
+                            comprar veículos.</p>
+                    </div>
+                </div>
+
+                <div class="projetos-card">
+
+                    <img src="./img/Projeto2.png" alt="Projeto 2" class="projetos-imagem">
+                    <h3 class="info-projetos">Main Dragon Ball</h3>
+                    <div class="caixa-textos-projetos">
+                        <p class="paragrafo-projetos">Uma página com imagens criadas por inteligência artificial,
+                            contendo descrição de personagens.</p>
+                    </div>
+                </div>
+
+                <div class="projetos-card">
+                    <img src="./img/Projeto3.png" alt="Projeto 3" class="projetos-imagem">
+                    <div class="caixa-textos-projetos">
+                        <h3 class="info-projetos">Projeto Login</h3>
+                        <p class="paragrafo-projetos">Página desenvolvida em HTML e CSS</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="contatos" class="contatos">
+
+            <h2 class="contatos-titulo">Entre em Contato</h2>
+
+            <form class="formulario-contato" id="formulario" onsubmit="enviarWhats(event)">
+
+                <div class="grupo-form">
+                    <input placeholder="Digite Seu Nome" class="campo-form" id="nome">
+                </div>
+
+                <div class="grupo-form">
+                    <textarea placeholder="Digite Sua Mensagem" class="campo-form" rows="6" id="mensagem"></textarea>
+                </div>
+
+                <button type="submit" class="botao-form">Enviar WhatsApp</button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        function enviarWhats(event) {
+            event.preventDefault(); // Impede o envio do formulário padrão
+
+            const nome = document.getElementById('nome').value;
+            const mensagem = document.getElementById('mensagem').value;
+            const telefone = '5563992970565';
+
+            const texto = 'Oi César, abrir seu portifólio e me interessei nos seus projetos!' +
+                `\n\nNome: ${nome}` +
+                `\nMensagem: ${mensagem}`;
+            const msgFormatada = encodeURIComponent(texto);
+            const url = `https://wa.me/${telefone}?text=${msgFormatada}%C3%A1,%20C%C3%A9sar%20Augustus`;
+
+            console.log(url);
+
+            window.open(url, '_blank');
+        }
+
+    </script>
+</body>
+
+</html>
